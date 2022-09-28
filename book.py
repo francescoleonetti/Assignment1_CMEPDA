@@ -22,8 +22,6 @@ import argparse
 
 
 def process(file_path):
-    """
-    """
     print(f'Opening input file {file_path}...')
     with open(file_path, 'r') as input_file:
         text = input_file.read()
