@@ -59,6 +59,7 @@ def process(file_path):
     plt.bar(dictionary_finale.keys(), dictionary_finale.values(), width, align='center') 
     plt.show()
 '''
+## PROBLEMI CON INSTALLAZIONE DI MATPLOTLIB DA SHELL
 
 
 
