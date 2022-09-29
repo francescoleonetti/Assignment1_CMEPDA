@@ -16,26 +16,22 @@
 
 """First assignment for the CMEPDA course, 2022/23"""
 
-import numpy
-import matplotlib.pyplot as plt
 import argparse
-
+import matplotlib.pyplot as plt
 
 def process(file_path):
     print(f'Opening input file {file_path}...')
-    with open(file_path, 'r') as input_file:
+    with open(file_path, 'r', encoding = 'utf-8') as input_file:
         text = input_file.read()
     #print(text)
     #print(len(text))
-
-    
+    #
     dictionary_minuscole = {}
     dictionary_maiuscole = {}
     dictionary_finale = {}
 
-    
     for i in range(ord('a'), ord('z')+1,1):
-        dictionary_minuscole[chr(i)] = 0 
+        dictionary_minuscole[chr(i)] = 0
         dictionary_finale[chr(i)] = 0
         dictionary_maiuscole[chr(i-32)] = 0
 
@@ -50,22 +46,17 @@ def process(file_path):
     for i in range (ord('a'), ord('z')+1,1):
         dictionary_finale[chr(i)] = dictionary_minuscole[chr(i)] + dictionary_maiuscole[chr(i-32)]
 
-    print(dictionary_finale)
-    print('DONE FINALE')
-
-'''
-    width = 2.0
-    plt.figure(1)
-    plt.bar(dictionary_finale.keys(), dictionary_finale.values(), width, align='center') 
+    width = 0.7
+    plt.figure('Grafico')
+    plt.title('Istogramma')
+    plt.xlabel('Lettera alfabeto latino')
+    plt.ylabel('Frequenza')
+    plt.bar(dictionary_finale.keys(), dictionary_finale.values(), width,
+    align='center', color = 'darkorange')
     plt.show()
-'''
-## PROBLEMI CON INSTALLAZIONE DI MATPLOTLIB DA SHELL
-
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Print some book statistics')
     parser.add_argument('infile', type=str, help='path to the input file')
     args = parser.parse_args()
     process(args.infile)
- 
