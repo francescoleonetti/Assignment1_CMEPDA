@@ -17,7 +17,10 @@
 """First assignment for the CMEPDA course, 2022/23"""
 
 import argparse
+import time
 import matplotlib.pyplot as plt
+
+t_iniziale = time.time()
 
 def process(file_path):
     print(f'Opening input file {file_path}...')
@@ -54,6 +57,10 @@ def process(file_path):
     plt.bar(dictionary_finale.keys(), dictionary_finale.values(), width,
     align='center', color = 'darkorange')
     plt.show()
+
+    t_finale = time.time()
+    intervallo = t_finale - t_iniziale
+    print(f'The total elapsed time is {intervallo}')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Print some book statistics')
